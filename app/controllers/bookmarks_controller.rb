@@ -2,15 +2,17 @@ class BookmarksController < ApplicationController
   before_action :set_list, only: [:new, :create]
   def new
     @bookmark = Bookmark.new
-    @movies = Movie.all
+
 
   end
   def create
     @bookmark = Bookmark.create(params_bookmark)
     @bookmark.list = @list
+
     if @bookmark.save
       redirect_to list_path(@list)
     else
+
       render :new
     end
   end
